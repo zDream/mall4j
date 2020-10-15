@@ -35,7 +35,7 @@ public class ImgJsonSerializer extends JsonSerializer<String> {
         String[] imgs = value.split(StrUtil.COMMA);
         StringBuilder sb = new StringBuilder();
         for (String img : imgs) {
-            sb.append(qiniu.getResourcesUrl()).append(img).append(StrUtil.COMMA);
+            sb.append("http://localhost:8886/image/").append(img).append(StrUtil.COMMA);
         }
         sb.deleteCharAt(sb.length()-1);
         gen.writeString(sb.toString());

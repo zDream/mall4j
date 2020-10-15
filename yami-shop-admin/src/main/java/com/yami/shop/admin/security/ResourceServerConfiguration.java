@@ -47,6 +47,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                         "/v2/api-docs",
                         "/doc.html",
                         "/swagger-ui.html",
+                        "/image/**",
                         "/swagger-resources/**",
                         "/captcha.jpg").permitAll()
                 .and()

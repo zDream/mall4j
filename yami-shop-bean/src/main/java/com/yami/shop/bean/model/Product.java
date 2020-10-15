@@ -49,7 +49,10 @@ public class Product implements Serializable {
      * 现价
      */
     private Double price;
-
+    /**
+     * 积分价格
+     */
+    private Double integralPrice;
     /**
      * 简要描述,卖点等
      */

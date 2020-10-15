@@ -47,7 +47,10 @@ public class Sku implements Serializable {
      * 价格
      */
     private Double price;
-
+    /**
+     * 积分价格
+     */
+    private Double integralPrice;
     /**
      * 库存
      */

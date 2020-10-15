@@ -10,6 +10,7 @@
     <result column="properties" jdbcType="VARCHAR" property="properties" />
     <result column="ori_price" jdbcType="DECIMAL" property="oriPrice" />
     <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="integralPrice" jdbcType="DECIMAL" property="integralPrice" />
     <result column="stocks" jdbcType="INTEGER" property="stocks" />
     <result column="actual_stocks" jdbcType="INTEGER" property="actualStocks" />
     <result column="status" jdbcType="TINYINT" property="status" />

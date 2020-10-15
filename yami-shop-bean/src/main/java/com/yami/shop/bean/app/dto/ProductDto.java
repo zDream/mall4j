@@ -50,6 +50,11 @@ public class ProductDto {
      */
     @ApiModelProperty(value = "商品价格", required = true)
     private Double price;
+    /**
+     * 积分价格
+     */
+    @ApiModelProperty(value = "积分价格", required = true)
+    private Double integralPrice;
 
     /**
      * 商品详情
@@ -82,7 +87,7 @@ public class ProductDto {
     @ApiModelProperty(value = "商品主图", required = true)
     private String pic;
 
-    @JsonSerialize(using = ImgJsonSerializer.class)
+//    @JsonSerialize(using = ImgJsonSerializer.class)
     @ApiModelProperty(value = "商品图片列表，以逗号分割", required = true)
     private String imgs;
 

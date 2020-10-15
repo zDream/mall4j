@@ -1,6 +1,6 @@
 # 单节点设置
 singleServerConfig:
-  address: redis://8.210.111.106:6379
+  address: redis://47.96.111.48:6379
   database: 1
   password: null
   idleConnectionTimeout: 10000

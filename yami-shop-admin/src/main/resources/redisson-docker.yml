@@ -1,7 +1,7 @@
 # 单节点设置
 singleServerConfig:
-  address: redis://mall4j-redis:6379
-  database: 0
+  address: redis://47.96.111.48:6379
+  database: 1
   password: null
   idleConnectionTimeout: 10000
   pingTimeout: 1000

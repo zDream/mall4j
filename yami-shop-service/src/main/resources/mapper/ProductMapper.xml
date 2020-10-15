@@ -62,6 +62,7 @@
         p.pic,
         p.prod_name,
         p.price,
+        p.integral_price,
         p.brief,
         sd.`shop_name`
     </sql>

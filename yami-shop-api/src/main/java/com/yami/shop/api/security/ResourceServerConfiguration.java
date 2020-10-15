@@ -38,6 +38,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .anonymous()
                 .and()
                 .authorizeRequests()
+                .antMatchers("/image/**").permitAll()
                 //配置/p访问控制，必须认证过后才可以访问
                 .antMatchers("/p/**").authenticated();
     }

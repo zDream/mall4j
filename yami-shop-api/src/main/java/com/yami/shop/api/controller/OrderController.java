@@ -15,7 +15,9 @@ import java.util.*;
 import javax.validation.Valid;
 
 import com.yami.shop.bean.app.dto.*;
+import com.yami.shop.bean.app.param.IntegralParam;
 import com.yami.shop.bean.event.ConfirmOrderEvent;
+import com.yami.shop.bean.event.CouponOrderEvent;
 import com.yami.shop.common.exception.YamiShopBindException;
 import com.yami.shop.security.util.SecurityUtils;
 import com.yami.shop.service.*;
@@ -58,6 +60,8 @@ public class OrderController {
     private BasketService basketService;
     @Autowired
     private ApplicationContext applicationContext;
+    @Autowired
+    private IntegralService integralService;
 
 
     /**
@@ -95,7 +99,7 @@ public class OrderController {
         double total = 0.0;
         int totalCount = 0;
         double orderReduce = 0.0;
-//        List<CouponOrderDto> coupons = new ArrayList<>();
+        List<CouponOrderDto> coupons = new ArrayList<>();
         for (ShopCartDto shopCart : shopCarts) {
 
             // 每个店铺的订单信息
@@ -123,7 +127,8 @@ public class OrderController {
             orderReduce = Arith.add(orderReduce,shopCartOrder.getShopReduce());
             shopCartOrders.add(shopCartOrder);
 
-
+            //优惠券
+            applicationContext.publishEvent(new CouponOrderEvent());
         }
 
         shopCartOrderMergerDto.setActualTotal(actualTotal);
@@ -170,6 +175,14 @@ public class OrderController {
         StringBuilder orderNumbers = new StringBuilder();
         for (Order order : orders) {
             orderNumbers.append(order.getOrderNumber()).append(",");
+
+            /**
+             * 购买商品后 累计积分
+             */
+            IntegralParam integralParam = new IntegralParam();
+            integralParam.setOrderId(order.getOrderId());
+            integralParam.setType(1);
+            integralService.integralManage(userId,integralParam);
         }
         orderNumbers.deleteCharAt(orderNumbers.length() - 1);
 
