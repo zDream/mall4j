@@ -62,9 +62,11 @@ public class FileController {
 		}
 		String fileName = file.getOriginalFilename();  // 文件名
 		String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-		String filePath = "D://temp-rainy//"; // 上传后的路径
+		String filePath = "/home/imageWrokspace/"; // 上传后的路径
 		fileName = UUID.randomUUID() + suffixName; // 新文件名
 		File dest = new File(filePath + fileName);
+		System.out.print("文件名为===");
+		System.out.println(dest.getAbsolutePath());
 		if (!dest.getParentFile().exists()) {
 			dest.getParentFile().mkdirs();
 		}
@@ -73,7 +75,8 @@ public class FileController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String filename = "/temp-rainy/" + fileName;
+		String filename = "/imageWrokspace/" + fileName;
+		System.out.println("filename="+filename);
 		model.addAttribute("filename", filename);
 		return fileName;
 	}
