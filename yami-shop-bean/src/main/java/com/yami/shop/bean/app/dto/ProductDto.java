@@ -87,7 +87,7 @@ public class ProductDto {
     @ApiModelProperty(value = "商品主图", required = true)
     private String pic;
 
-//    @JsonSerialize(using = ImgJsonSerializer.class)
+    @JsonSerialize(using = ImgJsonSerializer.class)
     @ApiModelProperty(value = "商品图片列表，以逗号分割", required = true)
     private String imgs;
 
