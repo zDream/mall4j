@@ -50,9 +50,27 @@ public class FileController {
 	}
 	
 	@PostMapping("/upload/tinymceEditor")
-	public ResponseEntity<String> uploadTinymceEditorImages(@RequestParam("editorFile") MultipartFile editorFile) throws IOException{
-		String fileName =  attachFileService.uploadFile(editorFile.getBytes(),editorFile.getOriginalFilename());
-        return ResponseEntity.ok(qiniu.getResourcesUrl() + fileName);
+	public ResponseEntity<String> uploadTinymceEditorImages(@RequestParam("editorFile") MultipartFile file) throws IOException{
+		if (file.isEmpty()) {
+			System.out.println("文件为空空");
+		}
+		String fileName = file.getOriginalFilename();  // 文件名
+		String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+		String filePath = "/home/imageWrokspace/"; // 上传后的路径
+		fileName = UUID.randomUUID() + suffixName; // 新文件名
+		File dest = new File(filePath + fileName);
+		System.out.print("文件名为===");
+		System.out.println(dest.getAbsolutePath());
+		if (!dest.getParentFile().exists()) {
+			dest.getParentFile().mkdirs();
+		}
+		try {
+			file.transferTo(dest);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+//		String filename = "/imageWrokspace/" + fileName;
+        return ResponseEntity.ok(fileName);
 	}
 
 	@PostMapping(value = "/fileUpload")

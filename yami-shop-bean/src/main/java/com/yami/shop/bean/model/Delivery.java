@@ -32,6 +32,11 @@ public class Delivery implements Serializable {
     private String dvyName;
 
     /**
+     * 物流公司编码
+     */
+    private String dvyCode;
+
+    /**
      * 公司主页
      */
 

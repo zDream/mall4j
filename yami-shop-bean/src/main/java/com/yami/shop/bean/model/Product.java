@@ -67,7 +67,6 @@ public class Product implements Serializable {
     /**
      * 商品图片
      */
-    @JsonSerialize(using = ImgJsonSerializer.class)
     private String imgs;
 
     /**
