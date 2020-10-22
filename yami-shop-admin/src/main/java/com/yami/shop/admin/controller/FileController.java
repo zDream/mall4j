@@ -69,8 +69,8 @@ public class FileController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		String filename = "/imageWrokspace/" + fileName;
-        return ResponseEntity.ok(fileName);
+		String filename = "/http://47.96.111.48:8886/image/" + fileName;
+        return ResponseEntity.ok(filename);
 	}
 
 	@PostMapping(value = "/fileUpload")
